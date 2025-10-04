@@ -19,4 +19,10 @@ Route::prefix('auth')->group(function () {
 
 Route::middleware('auth:sanctum')->prefix('patient')->group(function () {
     Route::post('getData', [\App\Http\Controllers\Api\PatientController::class, 'getData']);
+    Route::post('addPatient', [\App\Http\Controllers\Api\PatientController::class, 'addPatient']);
+});
+
+Route::middleware('auth:sanctum')->prefix('cares')->group(function () {
+    Route::post('getData', [\App\Http\Controllers\Api\CaresController::class, 'getData']);
+    Route::post('statusChange', [\App\Http\Controllers\Api\CaresController::class, 'statusChange']);
 });
