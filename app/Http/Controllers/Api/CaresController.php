@@ -37,5 +37,23 @@ class CaresController extends Controller
         }
     }
 
+    public function addCares(Request $request)
+    {
+        try {
+            return $this->cares->addCares();
+        } catch (\Throwable $th) {
+            return ApiResponse::error("System Error: ".$th->getMessage(), 500);
+        }
+    }
+
+    public function PatientDetails(Request $request)
+    {
+        try {
+            return $this->cares->PatientDetails();
+        } catch (\Throwable $th) {
+            return ApiResponse::error("System Error: ".$th->getMessage(), 500);
+        }
+    }
+
 
 }

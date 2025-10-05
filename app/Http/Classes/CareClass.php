@@ -89,4 +89,61 @@ class CareClass
             return ApiResponse::error($exception->getMessage(), $exception->getCode());
         }
     }
+
+    public function addCares()
+    {
+        try {
+
+            $patient_id = request()->get('patient_id');
+            $type_id = 1;
+            $description = '';
+
+            $existingCare = Cares::where('patient_id', $patient_id)
+                ->where('type_id', $type_id)
+                ->where('status', 1)
+                ->whereDate('created_at', Carbon::now())
+                ->exists();
+
+            if ($existingCare) {
+                return ApiResponse::error('-1',200);
+            }
+
+            $mdl = new Cares();
+            $mdl->created_at = Carbon::now();
+            $mdl->create_user_id = Auth::user()->id;
+            $mdl->updated_at = null;
+            $mdl->patient_id = $patient_id;
+            $mdl->type_id = $type_id;
+            $mdl->status = 1;
+            $mdl->description = $description;
+
+            if ($mdl->save()) {
+                return ApiResponse::success($mdl,$mdl->id);
+            } else {
+                return ApiResponse::error("Hata oluştu",500);
+            }
+        } catch (\Exception $exception) {
+            return ApiResponse::error($exception->getMessage(), $exception->getCode());
+        }
+    }
+
+    public function PatientDetails()
+    {
+        try {
+
+            $care_id = request()->get('care_id');
+
+            $care = Cares::where('id', $care_id)->first();
+            $patient = Patients::where('id', $care->patient_id)->first();
+
+            $datas = [
+                'care' => $care,
+                'patient' => $patient,
+            ];
+
+            return ApiResponse::success($datas,'OK');
+        } catch (\Exception $exception) {
+            return ApiResponse::error($exception->getMessage(), $exception->getCode());
+        }
+    }
 }

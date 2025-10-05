@@ -25,4 +25,6 @@ Route::middleware('auth:sanctum')->prefix('patient')->group(function () {
 Route::middleware('auth:sanctum')->prefix('cares')->group(function () {
     Route::post('getData', [\App\Http\Controllers\Api\CaresController::class, 'getData']);
     Route::post('statusChange', [\App\Http\Controllers\Api\CaresController::class, 'statusChange']);
+    Route::post('addCares', [\App\Http\Controllers\Api\CaresController::class, 'addCares']);
+    Route::post('patientDetails', [\App\Http\Controllers\Api\CaresController::class, 'PatientDetails']);
 });
