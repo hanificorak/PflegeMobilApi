@@ -227,7 +227,7 @@ class CareClass
     {
         try {
 
-            $query = MedicineLists::where('lang', "tr")->limit(1000)->get();
+            $query = MedicineLists::where('lang', "tr")->get();
 
             return ApiResponse::success($query, 'OK');
         } catch (\Exception $exception) {
