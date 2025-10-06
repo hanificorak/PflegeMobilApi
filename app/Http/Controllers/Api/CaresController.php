@@ -46,10 +46,82 @@ class CaresController extends Controller
         }
     }
 
-    public function PatientDetails(Request $request)
+    public function careDetails(Request $request)
     {
         try {
-            return $this->cares->PatientDetails();
+            return $this->cares->careDetails();
+        } catch (\Throwable $th) {
+            return ApiResponse::error("System Error: ".$th->getMessage(), 500);
+        }
+    }
+
+    public function getParam(Request $request)
+    {
+        try {
+            return $this->cares->getParam();
+        } catch (\Throwable $th) {
+            return ApiResponse::error("System Error: ".$th->getMessage(), 500);
+        }
+    }
+
+    public function careProcAdd(Request $request)
+    {
+        try {
+            return $this->cares->careProcAdd();
+        } catch (\Throwable $th) {
+            return ApiResponse::error("System Error: ".$th->getMessage(), 500);
+        }
+    }
+
+    public function medicineList(Request $request)
+    {
+        try {
+            return $this->cares->medicineList();
+        } catch (\Throwable $th) {
+            return ApiResponse::error("System Error: ".$th->getMessage(), 500);
+        }
+    }
+
+    public function medicineAdd(Request $request)
+    {
+        try {
+            return $this->cares->medicineAdd();
+        } catch (\Throwable $th) {
+            return ApiResponse::error("System Error: ".$th->getMessage(), 500);
+        }
+    }
+
+    public function getCareDetailData(Request $request)
+    {
+        try {
+            return $this->cares->getCareDetailData();
+        } catch (\Throwable $th) {
+            return ApiResponse::error("System Error: ".$th->getMessage(), 500);
+        }
+    }
+
+    public function updateDesc(Request $request)
+    {
+        try {
+            return $this->cares->updateDesc();
+        } catch (\Throwable $th) {
+            return ApiResponse::error("System Error: ".$th->getMessage(), 500);
+        }
+    }
+
+    public function medicineDelete(Request $request)
+    {
+        try {
+            return $this->cares->medicineDelete();
+        } catch (\Throwable $th) {
+            return ApiResponse::error("System Error: ".$th->getMessage(), 500);
+        }
+    }
+
+    public function procDelete(Request $request)
+    {
+        try {
+            return $this->cares->procDelete();
         } catch (\Throwable $th) {
             return ApiResponse::error("System Error: ".$th->getMessage(), 500);
         }

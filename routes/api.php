@@ -26,5 +26,14 @@ Route::middleware('auth:sanctum')->prefix('cares')->group(function () {
     Route::post('getData', [\App\Http\Controllers\Api\CaresController::class, 'getData']);
     Route::post('statusChange', [\App\Http\Controllers\Api\CaresController::class, 'statusChange']);
     Route::post('addCares', [\App\Http\Controllers\Api\CaresController::class, 'addCares']);
-    Route::post('patientDetails', [\App\Http\Controllers\Api\CaresController::class, 'PatientDetails']);
+    Route::post('careDetails', [\App\Http\Controllers\Api\CaresController::class, 'careDetails']);
+    Route::post('getParam', [\App\Http\Controllers\Api\CaresController::class, 'getParam']);
+    Route::post('careProcAdd', [\App\Http\Controllers\Api\CaresController::class, 'careProcAdd']);
+    Route::post('medicineList', [\App\Http\Controllers\Api\CaresController::class, 'medicineList']);
+    Route::post('medicineAdd', [\App\Http\Controllers\Api\CaresController::class, 'medicineAdd']);
+    Route::post('getCareDetailData', [\App\Http\Controllers\Api\CaresController::class, 'getCareDetailData']);
+    Route::post('updateDesc', [\App\Http\Controllers\Api\CaresController::class, 'updateDesc']);
+    Route::post('medicineDelete', [\App\Http\Controllers\Api\CaresController::class, 'medicineDelete']);
+    Route::post('procDelete', [\App\Http\Controllers\Api\CaresController::class, 'procDelete']);
+
 });
